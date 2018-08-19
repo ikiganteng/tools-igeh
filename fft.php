@@ -36,7 +36,7 @@ function login($username, $password){
 		return $array;
 }
 
-function chance($cookie, $ua, $target, $jumlah=="3", $sleep){
+function chance($cookie, $ua, $target, $jumlah= 3, $sleep){
     $random="Fllbck dong kak | Udh aku fllw ya,follbcknya | jgn lupa difollbck | Followback ya | followbck ya | fllwback ya | fllwbck ya | follback ya | fllback ya | follbck ya | fllbck ya | ditunggu followback nya | ditunggu followbck nya | ditunggu fllwbck nya | ditunggu fllwback nya | ditunggu follback nya | ditunggu follbck nya | ditunggu fllback nya | ditunggu fllbck nya | hai followback yay | hai followbck yay | hai fllwbck yay | hai fllwback yay | followbalik yay | follow balik ya";
     $random = explode("|", $random);
     $terpilih = $random[mt_rand(0, count($random)-1)];
