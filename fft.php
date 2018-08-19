@@ -178,7 +178,8 @@ function chance($cookie, $ua, $target, $jumlah){
                     if($like->status == "ok"){
                     $hasillike = "<font color=green>Like</font>";} else {$hasillike = "<font color=red>Like</font>";}
                     $iki = "@".$namanya[$i]." [<font color=green>></font>] ".$follow.",".$hasilkomen.",".$hasillike." [".$terpilih."] <br>";
-                    }else{
+                    	sleep(10);
+		    }else{
 			        $iki = "@".$namanya[$i]." [<font color=green>></font>] Timeline Kosong <font color=blue>BGSD</font> [<font color=yellow>SKIP</font>] <br>";
                     }
                     }else{
