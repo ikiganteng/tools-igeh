@@ -63,35 +63,29 @@ function chance($cookie, $ua, $target, $jumlah){
 		}while(count($listids)<=$jumlah);
 		for($i=0;$i<count($listids);$i++):
 			if($private[$i] == "1"){
-			    $iki = "@".$namanya[$i]." [<font color=green>></font>] Akunnya di Private <font color=blue>BGSD</font> [<font color=yellow>SKIP</font>] <br>";
+			    $iki = "@".$namanya[$i]." [>] Akunnya di Private BGSD [SKIP]";
 			}else{
 			    $show = request(1, $ua, 'friendships/show/'.$listids[$i].'/', $cookies);
                     $getshow = json_decode($show[1]);
                     if($getshow->following == false){
 			        $getmedia = request(1, $ua, 'feed/user/'.$listids[$i].'/', $cookies);
                     $getmedia = json_decode($getmedia[1]);
-                    if($getmedia->num_results > 0){
                     $media_id = $getmedia->items[0]->id;
 					$cross = request(1, $ua, 'friendships/create/'.$listids[$i].'/', $cookie, hook('{"user_id":"'.$listids[$i].'"}'));
                     $cross = json_decode($cross[1]);
                     if($cross->status == "ok"){
-                    $follow = "<font color=green>Follow</font>";} else {$follow = "<font color=red>Follow</font>";}
+                    $follow = "Sukses Follow";} else {$follow = "Gagal Follow";}
                     $komen = request(1, $ua, 'media/'.$media_id.'/comment/', $cookies, hook('{"comment_text":"'.$terpilih.'"}'));
                     $komen = json_decode($komen[1]);
                     if($komen->status == "ok"){
-                    $hasilkomen = "<font color=green>Comment</font>";} else {$hasilkomen = "<font color=red>Comment</font>";}
+                    $hasilkomen = "Sukses Comment";} else {$hasilkomen = "Gagal Comment";}
                     $like = request(1, $ua, 'media/'.$media_id.'/like/', $cookies, hook('{"media_id":"'.$media_id.'"}'));
                     $like = json_decode($like[1]);
                     if($like->status == "ok"){
-                    $hasillike = "<font color=green>Like</font>";} else {$hasillike = "<font color=red>Like</font>";}
-                    $iki = "@".$namanya[$i]." [<font color=green>></font>] ".$follow.",".$hasilkomen.",".$hasillike." [".$terpilih."] <br>";
-						sleep(10);
+                    $hasillike = "Sukses Like";} else {$hasillike = "Gagal Like";}
+                    $iki = "@".$namanya[$i]." [>] ".$follow.",".$hasilkomen.",".$hasillike." [".$terpilih."]";
                     }else{
-			        $iki = "@".$namanya[$i]." [<font color=green>></font>] Timeline Kosong <font color=blue>BGSD</font> [<font color=yellow>SKIP</font>] <br>";
-                    }
-                    }else{
-                    $iki = "@".$namanya[$i]." [<font color=green>></font>] Sudah Di Follow <br>";
-                    }
+                    $iki = "@".$namanya[$i]." [>] Sudah Di Follow";}
                     }
 					return $iki;
 		endfor;
@@ -106,6 +100,7 @@ echo "[>] Jumlah: ";
 $jumlah = read();
 echo "[>] Sleep: ";
 $sleep = read();
+echo "\n";
     $aib = add($username, $password);
     $go = json_decode($aib);
     if($go->result<>true){
@@ -113,7 +108,7 @@ $sleep = read();
 	exit();
 	}else
 for ($x = 0; $x <= $jumlah; $x++){
-	$ib = chance($go->cookie, $go->ua, $target, 3);
-    echo ' '.date("H:i:s").""  .$ib. "\n";
+	$ib = chance($go->cookie, $go->ua, $target, 1);
+    echo ' ['.date("H:i:s")."] "  .$ib. "\n";
 	sleep($sleep);
 }
