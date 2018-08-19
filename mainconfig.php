@@ -57,11 +57,11 @@ function generateDeviceId($seed){
 	$volatile_seed = filemtime(__DIR__);
 	return 'android-'.substr(md5($seed.$volatile_seed), 16);
 }
-function generateSignature($data){
-	$hash = hash_hmac('sha256', $data, '68a04945eb02970e2e8d15266fc256f7295da123e123f44b88f09d594a5902df');
+function hook($data){
+	$hash = hash_hmac('sha256', $data, '673581b0ddb792bf47da5f9ca816b613d7996f342723aa06993a3f0552311c7d');
 	return 'ig_sig_key_version=4&signed_body='.$hash.'.'.urlencode($data);
 }
-function generate_useragent($sign_version = '10.8.0'){
+function generate_useragent($sign_version = '42.0.0.19.95'){
 		$resolusi = array('1080x1776','1080x1920','720x1280', '320x480', '480x800', '1024x768', '1280x720', '768x1024', '480x320');
 		$versi = array('GT-N7000', 'SM-N9000', 'GT-I9220', 'GT-I9100');
 		$dpi = array('120', '160', '320', '240');
