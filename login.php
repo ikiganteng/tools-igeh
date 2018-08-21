@@ -45,5 +45,4 @@ $password = read();
 	echo $go->msg;
 	exit();
 	}else
-echo "ua : ".$go->ua."\n";
-echo "cookie : ".$go->cookie."\n";
+echo "Cookie : ".$go->cookie."\n";
