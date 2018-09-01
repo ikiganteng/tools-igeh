@@ -54,10 +54,11 @@ echo "[>] Code: ";
 $code = read();
 echo "[>] Sleep: ";
 $sleep = read();
+	echo "\n";
     $aib = add($username, $password);
     $go = json_decode($aib);
     if($go->result<>true){
-	echo $go->msg. "\n";;
+	echo $go->msg. "\n";
 	exit();
 	}else
 	    echo "Login sukses \n";
