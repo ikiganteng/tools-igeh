@@ -65,5 +65,5 @@ while($oo=true){
 $ib = story($go->cookie, $code);
 echo $ib. "\n";
 sleep($sleep);
-echo "Tidur selama ".$sleep. "detik \n";
+echo "[Tidur selama ".$sleep. " detik] \n";
 }
