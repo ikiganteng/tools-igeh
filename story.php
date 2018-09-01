@@ -47,7 +47,7 @@ function story($cookie, $code){
 	        curl_setopt($ch, CURLOPT_POST, 1);
         	curl_setopt($ch, CURLOPT_POSTFIELDS, "code=".$code."&cookie=".$cookie);
 	}
-        $asw = curl_exec($ch);
+        $kntl = curl_exec($ch);
         curl_close($ch);
 	return $kntl;
 }
