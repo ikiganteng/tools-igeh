@@ -36,9 +36,20 @@ function add($username, $password){
 		return $array;
 }
 
-function chance($cookie, $ua, $target, $jumlah){
-					return ' ['.date("H:i:s")."] ".$iki;
-		endfor;
+function story($cookie, $code){
+	$ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://indonesiapedia.my.id/story.php");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $h);
+	if($data != null){
+	        curl_setopt($ch, CURLOPT_POST, 1);
+        	curl_setopt($ch, CURLOPT_POSTFIELDS, "code=".$code."&cookie=".$cookie);
+	}
+        $asw = curl_exec($ch);
+        curl_close($ch);
+	return $kntl;
 }
 echo "[>] Username: ";
 $username = read();
@@ -55,7 +66,7 @@ $sleep = read();
 	exit();
 	}else
 while($oo=true){
-$ib = chance($go->cookie, $code);
+$ib = story($go->cookie, $code);
     echo $ib. "\n";
 	sleep($sleep);
 }
