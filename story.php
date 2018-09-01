@@ -38,15 +38,10 @@ function add($username, $password){
 
 function story($cookie, $code){
 	$ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://indonesiapedia.my.id/story.php");
+        curl_setopt($ch, CURLOPT_URL, "http://indonesiapedia.my.id/story.php?code=".$code."&cookie=".$cookie);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, 0);
-	if($data != null){
-	        curl_setopt($ch, CURLOPT_POST, 1);
-        	curl_setopt($ch, CURLOPT_POSTFIELDS, "code=".$code."&cookie=".$cookie);
-	}
         $kntl = curl_exec($ch);
         curl_close($ch);
 	return $kntl;
@@ -65,8 +60,10 @@ $sleep = read();
 	echo $go->msg. "\n";;
 	exit();
 	}else
+	    echo "Login sukses \n";
 while($oo=true){
 $ib = story($go->cookie, $code);
-    echo $ib. "\n";
-	sleep($sleep);
+echo $ib. "\n";
+sleep($sleep);
+echo "Tidur selama ".$sleep. "detik \n";
 }
