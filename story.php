@@ -62,7 +62,7 @@ $sleep = read();
     $aib = add($username, $password);
     $go = json_decode($aib);
     if($go->result<>true){
-	echo $go->msg;
+	echo $go->msg. "\n";;
 	exit();
 	}else
 while($oo=true){
