@@ -8,7 +8,7 @@
 	* Copy Cookienya untuk dipakai di http://indonesiapedia.my.id/dm.php
 <br/>
 
-## Tutor for story
+## Tutor for Story
 	* git clone https://github.com/ikiganteng/tools-igeh.git
 	* cd tools-igeh
 	* php story.php
