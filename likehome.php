@@ -30,7 +30,7 @@ function add($username, $password){
 		}else{
 		preg_match_all('%Set-Cookie: (.*?);%',$header,$d);$cookies = '';
 		for($o=0;$o<count($d[0]);$o++)$cookies.=$d[1][$o].";";
-	    $ua = generate_useragent();
+	     $ua = generate_useragent();
 		$array = json_encode(['result' => true, 'cookie' => $cookies, 'ua' => generate_useragent()]);
     }
 		return $array;
