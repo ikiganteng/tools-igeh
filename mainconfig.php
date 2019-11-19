@@ -27,7 +27,7 @@ function request($ighost, $useragent, $url, $cookie = 0, $data = 0, $httpheader 
 	}
 }
 function send($ighost, $useragent, $url, $cookie = 0, $data = 0, $httpheader = array(), $proxy = 0, $userpwd = 0, $is_socks5 = 0){
-	$url = $ighost ? 'https://i.instagram.com/api/v2/' . $url : $url;
+	$url = $ighost ? 'https://i.instagram.com/api/v1/' . $url : $url;
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -57,7 +57,7 @@ function generateDeviceId($seed){
 	$volatile_seed = filemtime(__DIR__);
 	return 'android-'.substr(md5($seed.$volatile_seed), 16);
 }
-function hook($data){
+function generateSignature($data){
 	$hash = hash_hmac('sha256', $data, '673581b0ddb792bf47da5f9ca816b613d7996f342723aa06993a3f0552311c7d');
 	return 'ig_sig_key_version=4&signed_body='.$hash.'.'.urlencode($data);
 }
@@ -122,4 +122,31 @@ function genWaktu($detik){
 		$detik1 = time()-10;
 		return "$detik"."_"."$detik1";
 			 }
+			 
+function output($message) {
+    echo "[", date("H:i:s"), "] ", $message, PHP_EOL;
+}
+
+function GetPostData($filename) {
+	if(!$filename) {
+		echo "The image doesn't exist ".$filename;
+	} else {
+		$post_data = array('device_timestamp' => time(), 
+							'photo' => '@'.$filename);
+		return $post_data;
+	}
+}
+
+function randomline( $filename ){
+$lines = file( $filename );
+return $lines[array_rand( $lines )];
+}
+
+function sebelum($string, $substring) {
+  $pos = strpos($string, $substring);
+  if ($pos === false)
+   return $string;
+  else  
+   return(substr($string, 0, $pos));
+}
 ?>
