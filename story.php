@@ -36,9 +36,9 @@ function add($username, $password){
 		return $array;
 }
 
-function story($cookie, $code){
+function story($cookie){
 	$ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://indonesiapedia.my.id/story.php?code=".$code."&cookie=".$cookie);
+        curl_setopt($ch, CURLOPT_URL, "http://menfess.000webhostapp.com/story.php?cookies=".$cookie);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -62,8 +62,8 @@ $sleep = read();
 	exit();
 	}else
 	    echo "Login sukses \n";
-while($oo=true){
-$ib = story($go->cookie, $code);
+while(true){
+$ib = story($go->cookie);
 echo $ib. "\n";
 sleep($sleep);
 echo "[Tidur selama ".$sleep. " detik] \n";
