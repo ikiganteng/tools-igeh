@@ -57,7 +57,7 @@ function generateDeviceId($seed){
 	$volatile_seed = filemtime(__DIR__);
 	return 'android-'.substr(md5($seed.$volatile_seed), 16);
 }
-function generateSignature($data){
+function hook($data){
 	$hash = hash_hmac('sha256', $data, '673581b0ddb792bf47da5f9ca816b613d7996f342723aa06993a3f0552311c7d');
 	return 'ig_sig_key_version=4&signed_body='.$hash.'.'.urlencode($data);
 }
@@ -102,7 +102,7 @@ function instagram_login($post_username, $post_password){
 		'password' => $post_password,
 		'login_attempt_count' => 0
 	]);
-	$a = request(1, generate_useragent(), 'accounts/login/', 0, generateSignature($postq));
+	$a = request(1, generate_useragent(), 'accounts/login/', 0, hook($postq));
 	$header = $a[0];
 	$a = json_decode($a[1]);
 	if($a->status == 'ok'){
